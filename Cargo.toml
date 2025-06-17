@@ -1,1 +1,11 @@
 
+[package]
+name = "human-detector-gui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+opencv = { version = "0.86", features = ["opencv-4", "buildtime-bindgen"] }
+egui = "0.24"  # For the UI
+eframe = "0.24" # Framework for egui
+anyhow = "1.0"  # Error handling
