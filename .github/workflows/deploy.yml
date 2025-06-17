@@ -1,1 +1,21 @@
+name: Deploy Human Detector
 
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: docker/setup-buildx-action@v2
+    - uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: ghcr.io/${{ github.repository }}:latest
+    - uses: flyio/actions-gh-releases@v1
+      with:
+        tag: ${{ github.ref }}
+        files: target/release/human-detector-gui
