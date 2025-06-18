@@ -1,0 +1,3 @@
+streamlit
+human-detector==0.1.0
+opencv-python-headless
